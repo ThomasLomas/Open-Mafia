@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * User
@@ -16,6 +17,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User implements UserInterface
 {
+    /**
+     * Hook timestampable behavior
+     * updates createdAt, updatedAt fields
+     */
+    use TimestampableEntity;
+
     /**
      * @var int
      *
@@ -88,6 +95,13 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $location = 0;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(nullable=true, type="datetime")
+     */
+    private $lastOnline;
 
     /**
      * Get id
@@ -328,5 +342,29 @@ class User implements UserInterface
     public function getLocation()
     {
         return $this->location;
+    }
+
+    /**
+     * Set lastOnline
+     *
+     * @param \DateTime $lastOnline
+     *
+     * @return User
+     */
+    public function setLastOnline(\DateTime $lastOnline)
+    {
+        $this->lastOnline = $lastOnline;
+
+        return $this;
+    }
+
+    /**
+     * Get lastOnline
+     *
+     * @return \DateTime
+     */
+    public function getLastOnline()
+    {
+        return $this->lastOnline;
     }
 }

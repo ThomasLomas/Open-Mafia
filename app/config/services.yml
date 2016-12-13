@@ -7,14 +7,18 @@ services:
     app.twig_extension:
         class: AppBundle\Twig\AppExtension
         public: false
-        arguments:
-            - '%open_mafia%'
+        arguments: ['%open_mafia%']
         tags:
             - { name: twig.extension }
 
     app.form.type.location:
         class: AppBundle\Form\Type\LocationType
-        arguments:
-            - '%open_mafia%'
+        arguments: ['%open_mafia%']
         tags:
             - { name: form.type }
+
+    app.user_subscriber:
+        class: AppBundle\EventSubscriber\UserSubscriber
+        arguments: ['@security.authorization_checker', '@security.token_storage', '@doctrine.orm.entity_manager']
+        tags:
+            - { name: kernel.event_subscriber }
