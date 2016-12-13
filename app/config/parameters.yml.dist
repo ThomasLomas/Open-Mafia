@@ -1,6 +1,3 @@
-# This file is a "template" of what your parameters.yml file should look like
-# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
-# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
     database_host:     127.0.0.1
     database_port:     ~
@@ -17,3 +14,69 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+
+    open_mafia:
+        currency:
+            before: '$'
+            after: ''
+
+        ranks:
+            - name: 'Scum'
+              experience: 0
+            - name: 'Wannabe'
+              experience: 10
+            - name: 'Goon'
+              experience: 20
+            - name: 'Hired Thug'
+              experience: 30
+            - name: 'Criminal'
+              experience: 40
+            - name: 'Hitman'
+              experience: 50
+            - name: 'Wanted Criminal'
+              experience: 60
+            - name: 'Hired Gunner'
+              experience: 70
+            - name: 'Assassin'
+              experience: 80
+            - name: 'Boss'
+              experience: 90
+            - name: 'Don'
+              experience: 100
+            - name: 'Enemy of the State'
+              experience: 110
+            - name: 'Global Threat'
+              experience: 120
+            - name: 'Global Dominator'
+              experience: 130
+            - name: 'Global Disaster'
+              experience: 140
+            - name: 'Legend'
+              experience: 150
+
+        wealth:
+            - name: 'Welfare Applicant'
+              amount: 0
+            - name: 'Enough To Live'
+              amount: 10000
+            - name: 'Middle Class'
+              amount: 100000
+            - name: 'Rich'
+              amount: 900000
+            - name: 'Millionare'
+              amount: 2000000
+            - name: 'Very Rich'
+              amount: 5000000
+            - name: 'Respectably Wealthy'
+              amount: 10000000
+            - name: 'Extremely Wealthy'
+              amount: 20000000
+            - name: 'Swims in Money'
+              amount: 50000000
+            - name: 'Drowning in Money'
+              amount: 200000000
+            - name: 'Burns money for heat'
+              amount: 500000000
+            - name: 'Billionaire'
+              amount: 1000000000

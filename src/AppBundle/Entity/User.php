@@ -62,6 +62,27 @@ class User implements UserInterface
     private $plainPassword;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    private $money = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $rank = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $experience = 0;
+
+    /**
      * Get id
      *
      * @return int
@@ -204,5 +225,77 @@ class User implements UserInterface
         $this->plainPassword = $plainPassword;
 
         return $this;
+    }
+
+    /**
+     * Set money
+     *
+     * @param float $money
+     *
+     * @return User
+     */
+    public function setMoney($money)
+    {
+        $this->money = $money;
+
+        return $this;
+    }
+
+    /**
+     * Get money
+     *
+     * @return float
+     */
+    public function getMoney()
+    {
+        return $this->money;
+    }
+
+    /**
+     * Set rank
+     *
+     * @param integer $rank
+     *
+     * @return User
+     */
+    public function setRank($rank)
+    {
+        $this->rank = $rank;
+
+        return $this;
+    }
+
+    /**
+     * Get rank
+     *
+     * @return integer
+     */
+    public function getRank()
+    {
+        return $this->rank;
+    }
+
+    /**
+     * Set experience
+     *
+     * @param integer $experience
+     *
+     * @return User
+     */
+    public function setExperience($experience)
+    {
+        $this->experience = $experience;
+
+        return $this;
+    }
+
+    /**
+     * Get experience
+     *
+     * @return integer
+     */
+    public function getExperience()
+    {
+        return $this->experience;
     }
 }
