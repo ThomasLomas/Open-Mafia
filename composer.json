@@ -1,6 +1,6 @@
 {
-    "name": "vagrant/open_mafia",
-    "license": "proprietary",
+    "name": "ThomaLomas/open_mafia",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {
