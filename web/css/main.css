@@ -149,7 +149,26 @@
   }
 }
 
+/**
+ * Toms dodgy CSS
+ */
+
+#main {
+  margin-top: 15px;
+}
+
 body {
   margin: 0px;
   padding: 0px;
+  background: #202020;
+  color: #FFFFFF;
+}
+
+a, a:hover {
+  color: #FFFFFF;
+}
+
+
+.table {
+  background: #2e353d;
 }

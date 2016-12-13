@@ -19,54 +19,70 @@
             <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
             <div class="menu-list">
                 <ul id="menu-content" class="menu-content collapse out">
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                        </a>
+                    <li data-toggle="collapse" data-target="#general" class="collapsed">
+                        <a href="#"><i class="fa fa-gift fa-lg"></i> General <span class="arrow"></span></a>
                     </li>
-                    <li data-toggle="collapse" data-target="#products" class="collapsed active">
-                        <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
-                    </li>
-                    <ul class="sub-menu collapse" id="products">
-                        <li class="active"><a href="#">CSS3 Animation</a></li>
-                        <li><a href="#">General</a></li>
-                        <li><a href="#">Buttons</a></li>
-                        <li><a href="#">Tabs &amp; Accordions</a></li>
-                        <li><a href="#">Typography</a></li>
-                        <li><a href="#">FontAwesome</a></li>
-                        <li><a href="#">Slider</a></li>
-                        <li><a href="#">Panels</a></li>
-                        <li><a href="#">Widgets</a></li>
-                        <li><a href="#">Bootstrap Model</a></li>
-                    </ul>
-                    <li data-toggle="collapse" data-target="#service" class="collapsed">
-                        <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
-                    </li>
-                    <ul class="sub-menu collapse" id="service">
-                        <li>New Service 1</li>
-                        <li>New Service 2</li>
-                        <li>New Service 3</li>
+                    <ul class="sub-menu collapse" id="general">
+                        <li><a href="#">Game Forum</a></li>
+                        <li><a href="#">O.C. Classifieds</a></li>
+                        <li><a href="/logout">Logout</a></li>
                     </ul>
 
-
-                    <li data-toggle="collapse" data-target="#new" class="collapsed">
-                        <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+                    <li data-toggle="collapse" data-target="#statistics" class="collapsed">
+                        <a href="#"><i class="fa fa-globe fa-lg"></i> Statistics <span class="arrow"></span></a>
                     </li>
-                    <ul class="sub-menu collapse" id="new">
-                        <li>New New 1</li>
-                        <li>New New 2</li>
-                        <li>New New 3</li>
+                    <ul class="sub-menu collapse" id="statistics">
+                        <li><a href="#">Properties</a></li>
+                        <li><a href="#">Networks</a></li>
                     </ul>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-user fa-lg"></i> Profile
-                        </a>
+
+                    <li data-toggle="collapse" data-target="#personal" class="collapsed">
+                        <a href="#"><i class="fa fa-globe fa-lg"></i> Personal <span class="arrow"></span></a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-users fa-lg"></i> Users
-                        </a>
+                    <ul class="sub-menu collapse" id="personal">
+                        <li><a href="#">Inbox</a></li>
+                        <li><a href="#">Send Message</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Notepad</a></li>
+                        <li><a href="{{ path('profile_online') }}">Online Players</a></li>
+                        <li><a href="#">Banking</a></li>
+                        <li><a href="#">Hospital</a></li>
+                    </ul>
+
+                    <li data-toggle="collapse" data-target="#network" class="collapsed">
+                        <a href="#"><i class="fa fa-globe fa-lg"></i> Network <span class="arrow"></span></a>
                     </li>
+                    <ul class="sub-menu collapse" id="network">
+                        <li><a href="#">Network Forum</a></li>
+                        <li><a href="#">Network Information</a></li>
+                        <li><a href="#">Network HQ</a></li>
+                    </ul>
+
+                    <li data-toggle="collapse" data-target="#actions" class="collapsed">
+                        <a href="#"><i class="fa fa-globe fa-lg"></i> Actions <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="actions">
+                        <li><a href="#">Crimes</a></li>
+                        <li><a href="#">GTA</a></li>
+                        <li><a href="#">Booze</a></li>
+                        <li><a href="#">Airport</a></li>
+                        <li><a href="#">Most Wanted</a></li>
+                        <li><a href="#">Jail</a></li>
+                        <li><a href="#">Organized Crime</a></li>
+                        <li><a href="#">Stores</a></li>
+                        <li><a href="#">Bullets</a></li>
+                    </ul>
+
+                    <li data-toggle="collapse" data-target="#casino" class="collapsed">
+                        <a href="#"><i class="fa fa-globe fa-lg"></i> Casino <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="casino">
+                        <li><a href="#">Black Jack</a></li>
+                        <li><a href="#">Racetrack</a></li>
+                        <li><a href="#">Slots</a></li>
+                        <li><a href="#">Roulette</a></li>
+                        <li><a href="#">Lottery</a></li>
+                    </ul>
                 </ul>
             </div>
         </div>

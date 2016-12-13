@@ -10,4 +10,15 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findOnlineOrderedByUsername()
+    {
+        $cutOff = new \DateTime();
+        $cutOff->sub(new \DateInterval('PT10M'));
+
+        return $this->getEntityManager()
+            ->createQuery('SELECT u FROM AppBundle:User u WHERE u.lastOnline >= :cutOff ORDER BY u.username ASC')
+            ->setParameter('cutOff', $cutOff)
+            ->getResult()
+        ;
+    }
 }

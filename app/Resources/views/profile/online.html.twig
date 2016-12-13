@@ -1,0 +1,29 @@
+{% extends 'play.html.twig' %}
+
+{% block title 'Online Players' %}
+
+{% block body %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Online in the last 10 minutes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    {% for user in users %}
+                        <a href="{{ path('profile_view', { 'id': user.id }) }}">{{ user.username}}</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>Administrator / Moderator &bull; Network Member &bull; Friend &bull; Enemy</th>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
