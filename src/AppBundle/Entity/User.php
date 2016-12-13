@@ -83,6 +83,13 @@ class User implements UserInterface
     private $experience = 0;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $location = 0;
+
+    /**
      * Get id
      *
      * @return int
@@ -297,5 +304,29 @@ class User implements UserInterface
     public function getExperience()
     {
         return $this->experience;
+    }
+
+    /**
+     * Set location
+     *
+     * @param integer $location
+     *
+     * @return User
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return integer
+     */
+    public function getLocation()
+    {
+        return $this->location;
     }
 }

@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use AppBundle\Form\Type\LocationType;
 
 class RegisterType extends AbstractType
 {
@@ -19,6 +20,7 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('username', TextType::class)
+            ->add('location', LocationType::class)
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Password'),
