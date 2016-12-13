@@ -1,11 +1,22 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/security.html
 security:
 
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+
     providers:
-        in_memory:
-            memory: ~
+        main_provider:
+            entity:
+                class: AppBundle:User
+                property: username
+
+    access_control:
+        - { path: ^/play, roles: ROLE_USER }
+        - { path: ^/control, roles: ROLE_MOD }
+
+    role_hierarchy:
+        ROLE_MOD:   [ROLE_USER]
+        ROLE_ADMIN: [ROLE_USER, ROLE_MOD, ROLE_ALLOWED_TO_SWITCH]
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -14,11 +25,15 @@ security:
             security: false
 
         main:
+            pattern:    ^/
             anonymous: ~
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            form_login:
+                login_path: public_home
+                check_path: public_home
+            provider: main_provider
+            switch_user:
+                role: ROLE_ADMIN
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /

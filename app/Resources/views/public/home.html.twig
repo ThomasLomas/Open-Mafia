@@ -1,5 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends 'public.html.twig' %}
 
 {% block body %}
+    {% if login_error %}
+        <div>{{ login_error.messageKey|trans(login_error.messageData, 'security') }}</div>
+    {% endif %}
 
+    <form action="{{ path('public_home') }}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" />
+
+        <input type="checkbox" id="remember_me" name="_remember_me" checked />
+        <label for="remember_me">Keep me logged in</label>
+        
+        <button type="submit">login</button>
+    </form>
 {% endblock %}
