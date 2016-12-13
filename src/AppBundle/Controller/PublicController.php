@@ -30,6 +30,13 @@ class PublicController extends Controller
     }
 
     /**
+     * @Route("/logout", name="public_logout")
+     */
+    public function logoutAction(Request $request)
+    {
+    }
+
+    /**
      * @Route("/register", name="public_register")
      */
     public function registerAction(Request $request)

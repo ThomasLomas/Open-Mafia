@@ -30,6 +30,8 @@ security:
             form_login:
                 login_path: public_home
                 check_path: public_home
+                default_target_path: play_home
+                always_use_default_target_path: true
             provider: main_provider
             switch_user:
                 role: ROLE_ADMIN
@@ -37,3 +39,6 @@ security:
                 secret:   '%secret%'
                 lifetime: 604800 # 1 week in seconds
                 path:     /
+            logout:
+                path:   /logout
+                target: /
