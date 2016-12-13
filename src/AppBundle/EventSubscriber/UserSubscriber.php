@@ -8,6 +8,7 @@ use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Security\Http\SecurityEvents;
 
 class UserSubscriber implements EventSubscriberInterface
 {
@@ -27,6 +28,9 @@ class UserSubscriber implements EventSubscriberInterface
         return [
             KernelEvents::CONTROLLER => [
                 ['updateLastOnline', 0]
+            ],
+            SecurityEvents::INTERACTIVE_LOGIN => [
+                ['recordLogin', 0]
             ]
         ];
     }
@@ -56,5 +60,10 @@ class UserSubscriber implements EventSubscriberInterface
         ]);
 
         return true;
+    }
+
+    public function recordLogin()
+    {
+
     }
 }
