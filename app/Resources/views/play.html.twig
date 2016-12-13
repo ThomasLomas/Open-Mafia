@@ -14,7 +14,7 @@
         <div class="nav-side-menu">
             <div class="brand">{{ open_mafia.name }}</div>
             <div class="player-info">
-                <strong>Rank:</strong> {{ open_mafia.ranks[app.user.rank].name }} &bull; <strong>Location:</strong> {{ open_mafia.locations[app.user.location].name }}
+                <strong>Cash:</strong> {{ app.user.location|money }} &bull; <strong>Rank:</strong> {{ app.user.rank|rank }} &bull; <strong>Location:</strong> {{ app.user.location|location }}
             </div>
             <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
             <div class="menu-list">

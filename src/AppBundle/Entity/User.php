@@ -66,7 +66,7 @@ class User implements UserInterface
      *
      * @ORM\Column(type="decimal", scale=2)
      */
-    private $money = 0;
+    private $cash = 0;
 
     /**
      * @var integer
@@ -235,27 +235,27 @@ class User implements UserInterface
     }
 
     /**
-     * Set money
+     * Set cash
      *
-     * @param float $money
+     * @param float $cash
      *
      * @return User
      */
-    public function setMoney($money)
+    public function setCash($cash)
     {
-        $this->money = $money;
+        $this->cash = $cash;
 
         return $this;
     }
 
     /**
-     * Get money
+     * Get cash
      *
      * @return float
      */
-    public function getMoney()
+    public function getCash()
     {
-        return $this->money;
+        return $this->cash;
     }
 
     /**
