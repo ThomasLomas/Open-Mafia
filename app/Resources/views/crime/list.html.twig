@@ -1,0 +1,34 @@
+{% extends 'play.html.twig' %}
+
+{% block title 'Crimes' %}
+
+{% block body %}
+    {{ form_start(form) }}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Crimes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for crime in form.crime %}
+                <tr>
+                    <td>
+                        {{ form_widget(crime) }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>
+                    {{ form_widget(form.submit) }}
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+    {{ form_end(form) }}
+{% endblock %}

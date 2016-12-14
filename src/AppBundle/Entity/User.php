@@ -104,6 +104,47 @@ class User implements UserInterface
     private $lastOnline;
 
     /**
+     * @ORM\OneToMany(targetEntity="Login", mappedBy="user")
+     */
+    private $logins;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(type="json_array")
+     */
+    private $crimeChances = [];
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(type="json_array")
+     */
+    private $gtaChances = [];
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(nullable=true, type="datetime")
+     */
+    private $lastCrime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(nullable=true, type="datetime")
+     */
+    private $lastGta;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->logins = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -366,5 +407,135 @@ class User implements UserInterface
     public function getLastOnline()
     {
         return $this->lastOnline;
+    }
+
+    /**
+     * Add login
+     *
+     * @param \AppBundle\Entity\Login $login
+     *
+     * @return User
+     */
+    public function addLogin(\AppBundle\Entity\Login $login)
+    {
+        $this->logins[] = $login;
+
+        return $this;
+    }
+
+    /**
+     * Remove login
+     *
+     * @param \AppBundle\Entity\Login $login
+     */
+    public function removeLogin(\AppBundle\Entity\Login $login)
+    {
+        $this->logins->removeElement($login);
+    }
+
+    /**
+     * Get logins
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLogins()
+    {
+        return $this->logins;
+    }
+
+    /**
+     * Set crimeChances
+     *
+     * @param array $crimeChances
+     *
+     * @return User
+     */
+    public function setCrimeChances($crimeChances)
+    {
+        $this->crimeChances = $crimeChances;
+
+        return $this;
+    }
+
+    /**
+     * Get crimeChances
+     *
+     * @return array
+     */
+    public function getCrimeChances()
+    {
+        return $this->crimeChances;
+    }
+
+    /**
+     * Set gtaChances
+     *
+     * @param array $gtaChances
+     *
+     * @return User
+     */
+    public function setGtaChances($gtaChances)
+    {
+        $this->gtaChances = $gtaChances;
+
+        return $this;
+    }
+
+    /**
+     * Get gtaChances
+     *
+     * @return array
+     */
+    public function getGtaChances()
+    {
+        return $this->gtaChances;
+    }
+
+    /**
+     * Set lastCrime
+     *
+     * @param \DateTime $lastCrime
+     *
+     * @return User
+     */
+    public function setLastCrime($lastCrime)
+    {
+        $this->lastCrime = $lastCrime;
+
+        return $this;
+    }
+
+    /**
+     * Get lastCrime
+     *
+     * @return \DateTime
+     */
+    public function getLastCrime()
+    {
+        return $this->lastCrime;
+    }
+
+    /**
+     * Set lastGta
+     *
+     * @param \DateTime $lastGta
+     *
+     * @return User
+     */
+    public function setLastGta($lastGta)
+    {
+        $this->lastGta = $lastGta;
+
+        return $this;
+    }
+
+    /**
+     * Get lastGta
+     *
+     * @return \DateTime
+     */
+    public function getLastGta()
+    {
+        return $this->lastGta;
     }
 }

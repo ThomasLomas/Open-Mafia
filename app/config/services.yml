@@ -17,8 +17,20 @@ services:
         tags:
             - { name: form.type }
 
+    app.form.type.crime:
+        class: AppBundle\Form\Type\CrimeType
+        arguments: ['%open_mafia%', '@security.token_storage']
+        tags:
+            - { name: form.type }
+
     app.user_subscriber:
         class: AppBundle\EventSubscriber\UserSubscriber
         arguments: ['@security.authorization_checker', '@security.token_storage', '@doctrine.orm.entity_manager']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.crime_subscriber:
+        class: AppBundle\EventSubscriber\CrimeSubscriber
+        arguments: ['@security.token_storage', '@doctrine.orm.entity_manager']
         tags:
             - { name: kernel.event_subscriber }

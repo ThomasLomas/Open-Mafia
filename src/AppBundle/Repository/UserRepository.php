@@ -21,4 +21,16 @@ class UserRepository extends \Doctrine\ORM\EntityRepository
             ->getResult()
         ;
     }
+
+    public function updateLastOnline($id)
+    {
+        $update = $this->getEntityManager()->createQuery('
+            UPDATE AppBundle:User u SET u.lastOnline = :now WHERE u.id = :id
+        ');
+
+        return $update->execute([
+            'now' => new \DateTime,
+            'id' => $id
+        ]);
+    }
 }
