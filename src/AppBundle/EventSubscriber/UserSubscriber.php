@@ -31,11 +31,15 @@ class UserSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
+            KernelEvents::REQUEST => [
+                ['removeOldJailRecords', 0]
+            ],
             KernelEvents::CONTROLLER => [
                 ['updateLastOnline', 0]
             ],
             SecurityEvents::INTERACTIVE_LOGIN => [
-                ['recordSuccessfulLogin', 0]
+                ['recordSuccessfulLogin', 0],
+                ['updateUserRank', -255]
             ],
             CrimeCommitEvent::SUCCESS => [
                 ['updateUserRank', -255]
@@ -67,8 +71,6 @@ class UserSubscriber implements EventSubscriberInterface
         $this->entityManager->getRepository('AppBundle:User')->updateLastOnline(
             $this->tokenStorage->getToken()->getUser()->getId()
         );
-
-        return true;
     }
 
     /**
@@ -83,10 +85,11 @@ class UserSubscriber implements EventSubscriberInterface
 
         $this->entityManager->persist($login);
         $this->entityManager->flush();
-
-        return true;
     }
 
+    /**
+     * Updates the user rank on events that changes EXP
+     */
     public function updateUserRank()
     {
         $user = $this->tokenStorage->getToken()->getUser();
@@ -105,5 +108,21 @@ class UserSubscriber implements EventSubscriberInterface
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
+    }
+
+    /**
+     * Immedietely remove jail records for a player that is online instead of waiting
+     * for the console command to clear it up
+     */
+    public function removeOldJailRecords()
+    {
+        // User isn't logged in
+        if (!$this->authorizationChecker->isGranted('ROLE_USER')) {
+            return;
+        }
+
+        $this->entityManager->getRepository('AppBundle:Jail')->removeOldRecords(
+            $this->tokenStorage->getToken()->getUser()->getId()
+        );
     }
 }

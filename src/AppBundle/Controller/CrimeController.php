@@ -40,11 +40,16 @@ class CrimeController extends Controller
             } elseif($crime->getChance() < $crimeRandomChance && $jailChance === 1) {
                 $jail = new Jail;
                 $jail->setUser($this->getUser());
-                $jail->setReason();
+                $jail->setReason('Attempted to commit a crime');
+                $jail->setTime(mt_rand(30, 70));
+                $jail->setUser($this->getUser());
+                $jail->setLocation($this->getUser()->getLocation());
 
-                $jailEvent = new JailEvent([ 'time' => mt_rand(30,70), 'reason' => 'crime' ]);
+                $jailEvent = new JailEvent($jail);
+
                 $dispatcher->dispatch(CrimeCommitEvent::FAIL, $crimeEvent);
                 $dispatcher->dispatch(JailEvent::BOOK, $jailEvent);
+
                 $this->addFlash('danger', 'This crime was unsuccessful and you have been jailed');
             } else {
                 $dispatcher->dispatch(CrimeCommitEvent::FAIL, $crimeEvent);

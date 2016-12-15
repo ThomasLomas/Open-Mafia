@@ -34,3 +34,9 @@ services:
         arguments: ['@security.token_storage', '@doctrine.orm.entity_manager']
         tags:
             - { name: kernel.event_subscriber }
+
+    app.jail_subscriber:
+        class: AppBundle\EventSubscriber\JailSubscriber
+        arguments: ['@security.token_storage', '@doctrine.orm.entity_manager']
+        tags:
+            - { name: kernel.event_subscriber }

@@ -47,7 +47,7 @@ class Jail
      *
      * @ORM\Column(name="breakable", type="boolean")
      */
-    private $breakable;
+    private $breakable = true;
 
     /**
      * @var string
@@ -94,6 +94,23 @@ class Jail
     public function getUntil()
     {
         return $this->until;
+    }
+
+    /**
+     * Set time
+     *
+     * @param int $time
+     *
+     * @return Jail
+     */
+    public function setTime($time)
+    {
+        $now = new \DateTime;
+        $now->add(new \DateInterval('PT' . $time . 'S'));
+
+        $this->setUntil($now);
+
+        return $this;
     }
 
     /**

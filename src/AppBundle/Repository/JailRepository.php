@@ -10,4 +10,15 @@ namespace AppBundle\Repository;
  */
 class JailRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function removeOldRecords($id)
+    {
+        $update = $this->getEntityManager()->createQuery('
+            DELETE FROM AppBundle:Jail j WHERE j.user = :id AND j.until <= :now
+        ');
+
+        return $update->execute([
+            'now' => new \DateTime,
+            'id' => $id
+        ]);
+    }
 }
