@@ -36,38 +36,38 @@ parameters:
             - name: 'Toronto - Canada'
 
         ranks:
-            - name: 'Scum'
+            - name: Scum
               experience: 0
-            - name: 'Wannabe'
-              experience: 10
-            - name: 'Goon'
-              experience: 20
-            - name: 'Hired Thug'
-              experience: 30
-            - name: 'Criminal'
-              experience: 40
-            - name: 'Hitman'
-              experience: 50
-            - name: 'Wanted Criminal'
-              experience: 60
-            - name: 'Hired Gunner'
-              experience: 70
-            - name: 'Assassin'
-              experience: 80
-            - name: 'Boss'
-              experience: 90
-            - name: 'Don'
-              experience: 100
-            - name: 'Enemy of the State'
-              experience: 110
-            - name: 'Global Threat'
-              experience: 120
-            - name: 'Global Dominator'
-              experience: 130
-            - name: 'Global Disaster'
-              experience: 140
-            - name: 'Legend'
+            - name: Wannabe
               experience: 150
+            - name: Goon
+              experience: 350
+            - name: 'Hired Thug'
+              experience: 700
+            - name: Criminal
+              experience: 1500
+            - name: Hitman
+              experience: 3200
+            - name: 'Wanted Criminal'
+              experience: 6400
+            - name: 'Hired Gunner'
+              experience: 12000
+            - name: Assassin
+              experience: 25000
+            - name: Boss
+              experience: 55000
+            - name: Don
+              experience: 100000
+            - name: 'Enemy of the State'
+              experience: 175000
+            - name: 'Global Threat'
+              experience: 400000
+            - name: 'Global Dominator'
+              experience: 800000
+            - name: 'Global Disaster'
+              experience: 1500000
+            - name: Legend
+              experience: 5000000
 
         wealth:
             - name: 'Welfare Applicant'

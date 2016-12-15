@@ -3,6 +3,7 @@
 namespace AppBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
+use AppBundle\Entity\Jail;
 
 class JailEvent extends Event
 {
@@ -10,15 +11,15 @@ class JailEvent extends Event
     const BUST = 'jail.bust';
     const BREAK = 'jail.break';
 
-    protected $details;
+    protected $jail;
 
-    public function __construct($details)
+    public function __construct(Jail $jail)
     {
-        $this->details = $details;
+        $this->jail = $jail;
     }
 
-    public function getDetails()
+    public function getJail()
     {
-        return $this->details;
+        return $this->jail;
     }
 }

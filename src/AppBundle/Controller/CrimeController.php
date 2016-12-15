@@ -9,6 +9,7 @@ use AppBundle\Form\CommitCrimeType;
 use AppBundle\Event\CrimeCommitEvent;
 use AppBundle\Event\JailEvent;
 use AppBundle\Model\Crime;
+use AppBundle\Entity\Jail;
 
 class CrimeController extends Controller
 {
@@ -37,6 +38,10 @@ class CrimeController extends Controller
                 $dispatcher->dispatch(CrimeCommitEvent::SUCCESS, $crimeEvent);
                 $this->addFlash('success', 'This crime was successful');
             } elseif($crime->getChance() < $crimeRandomChance && $jailChance === 1) {
+                $jail = new Jail;
+                $jail->setUser($this->getUser());
+                $jail->setReason();
+
                 $jailEvent = new JailEvent([ 'time' => mt_rand(30,70), 'reason' => 'crime' ]);
                 $dispatcher->dispatch(CrimeCommitEvent::FAIL, $crimeEvent);
                 $dispatcher->dispatch(JailEvent::BOOK, $jailEvent);
