@@ -37,6 +37,6 @@ services:
 
     app.jail_subscriber:
         class: AppBundle\EventSubscriber\JailSubscriber
-        arguments: ['@security.token_storage', '@doctrine.orm.entity_manager']
+        arguments: ['@router', '@annotation_reader', '@security.token_storage', '@doctrine.orm.entity_manager']
         tags:
             - { name: kernel.event_subscriber }

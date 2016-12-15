@@ -10,11 +10,13 @@ use AppBundle\Event\CrimeCommitEvent;
 use AppBundle\Event\JailEvent;
 use AppBundle\Model\Crime;
 use AppBundle\Entity\Jail;
+use AppBundle\Annotation\CheckJail;
 
 class CrimeController extends Controller
 {
     /**
      * @Route("/play/crimes", name="crimes_list")
+     * @CheckJail
      */
     public function listAction(Request $request)
     {
