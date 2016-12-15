@@ -11,15 +11,18 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Http\SecurityEvents;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use AppBundle\Entity\Login;
+use AppBundle\Event\CrimeCommitEvent;
 
 class UserSubscriber implements EventSubscriberInterface
 {
+    private $openMafia;
     private $authorizationChecker;
     private $tokenStorage;
     private $entityManager;
 
-    public function __construct(AuthorizationChecker $authorizationChecker, TokenStorage $tokenStorage, EntityManager $entityManager)
+    public function __construct(array $openMafia, AuthorizationChecker $authorizationChecker, TokenStorage $tokenStorage, EntityManager $entityManager)
     {
+        $this->openMafia = $openMafia;
         $this->authorizationChecker = $authorizationChecker;
         $this->tokenStorage = $tokenStorage;
         $this->entityManager = $entityManager;
@@ -33,7 +36,13 @@ class UserSubscriber implements EventSubscriberInterface
             ],
             SecurityEvents::INTERACTIVE_LOGIN => [
                 ['recordSuccessfulLogin', 0]
-            ]
+            ],
+            CrimeCommitEvent::SUCCESS => [
+                ['updateUserRank', -255]
+            ],
+            CrimeCommitEvent::FAIL => [
+                ['updateUserRank', -254]
+            ],
         ];
     }
 
@@ -76,5 +85,25 @@ class UserSubscriber implements EventSubscriberInterface
         $this->entityManager->flush();
 
         return true;
+    }
+
+    public function updateUserRank()
+    {
+        $user = $this->tokenStorage->getToken()->getUser();
+
+        // No point if the user has no experience
+        if($user->getExperience() === 0) {
+            return;
+        }
+
+        foreach($this->openMafia['ranks'] as $index => $rank) {
+            if($user->getExperience() <= $rank['experience']) {
+                $user->setRank($index - 1);
+                break;
+            }
+        }
+
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
     }
 }

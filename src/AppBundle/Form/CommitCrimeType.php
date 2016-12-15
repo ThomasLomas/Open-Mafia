@@ -20,4 +20,11 @@ class CommitCrimeType extends AbstractType
             ->add('submit', SubmitType::class, ['label' => 'Commit Crime'])
         ;
     }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'AppBundle\Model\Crime',
+        ));
+    }
 }

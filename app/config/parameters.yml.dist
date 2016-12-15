@@ -20,6 +20,13 @@ parameters:
             before: '$'
             after: ''
 
+        crimes:
+            - name: Commit credit card fraud
+            - name: Rob a gas station
+            - name: Sell illegal weapons
+            - name: Rob a store
+            - name: Rob a bank
+
         locations:
             - name: 'London - England'
             - name: 'Amsterdam - Netherlands'

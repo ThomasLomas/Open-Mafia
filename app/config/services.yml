@@ -25,7 +25,7 @@ services:
 
     app.user_subscriber:
         class: AppBundle\EventSubscriber\UserSubscriber
-        arguments: ['@security.authorization_checker', '@security.token_storage', '@doctrine.orm.entity_manager']
+        arguments: ['%open_mafia%', '@security.authorization_checker', '@security.token_storage', '@doctrine.orm.entity_manager']
         tags:
             - { name: kernel.event_subscriber }
 
